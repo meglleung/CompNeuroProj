@@ -1,0 +1,16 @@
+./kv.c: ../mechanisms/kv.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kv.mod" -o "/Users/meganleung/CompModNervSys-final/arm64")
+
+./kv.o: ./kv.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./na.c: ../mechanisms/na.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "na.mod" -o "/Users/meganleung/CompModNervSys-final/arm64")
+
+./na.o: ./na.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
